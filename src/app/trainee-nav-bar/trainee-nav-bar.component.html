@@ -1,0 +1,19 @@
+<header>
+  <div class="navBar">
+    <div class="nav-logo">
+      <div class="logo">
+        <img src='assets/images/icon.svg' alt="logo" (click)="backToMyProfile()"/>
+      </div>
+      <div class="logo-spacer">
+        <p (click)="backToMyProfile()">GYM</p>
+      </div>
+      <div class="nav-info">
+        <button mat-raised-button (click)="redirectToMyTrainings()">My Trainings</button>
+        <button mat-raised-button (click)="backToMyProfile()">My Profile</button>
+        <button mat-raised-button routerLink="/login" routerLinkActive="active">Log out</button>
+      </div>
+    </div>
+
+  </div>
+</header>
+

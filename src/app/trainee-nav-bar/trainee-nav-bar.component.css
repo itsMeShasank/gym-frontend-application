@@ -1,0 +1,41 @@
+
+
+.navBar {
+  height: 70px;
+  color: white;
+  padding-left: 2%;
+}
+.nav-logo {
+  display: flex;
+  height: 60px;
+  width: 120px;
+}
+.logo {
+  height: 60px;
+  width: 50px;
+  display: flex;
+}
+.logo-spacer {
+  font-size: 20px;
+  color: black;
+  margin-left: 15%;
+  font-weight: bold;
+  margin-top: 16%
+}
+
+
+.nav-info {
+  position: absolute;
+  right: 0;
+  height: 60px;
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 5px;
+}
+.nav-info button {
+  background-color: black;
+  margin-right: 5%;
+  color: white;
+}
