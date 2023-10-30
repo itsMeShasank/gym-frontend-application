@@ -1,0 +1,47 @@
+<app-trainer-nav-bar [trainer]='trainerProfile' ></app-trainer-nav-bar>
+
+<div class="container">
+
+  <div class="header">
+    <h1>Trainee Updation</h1>
+    <h3>{{trainerProfile.userName}}</h3>
+  </div>
+
+  <div class="body">
+
+
+    <div class="registration-form">
+      <form (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <mat-icon matPrefix class="my-icon">perm_identity</mat-icon>
+          <mat-label>Enter Firstname</mat-label>
+          <input matInput type="text" id="firstName" name="firstName" [(ngModel)]="trainerProfile.firstName">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-icon matPrefix class="my-icon">perm_identity</mat-icon>
+          <mat-label>Enter Lastname</mat-label>
+          <input matInput type="text" id="lastName" name="lastName" [(ngModel)]="trainerProfile.lastName">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-icon matPrefix class="my-icon">fitness_center</mat-icon>
+          <mat-label>Specialization</mat-label>
+          <input matInput type="text" id="specialization" name="specialization" [(ngModel)]="trainerProfile.specialization" readonly>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-icon matPrefix class="my-icon">email</mat-icon>
+          <mat-label>Enter your email</mat-label>
+          <input type="email" matInput id="email" name="email" [(ngModel)]="trainerProfile.mail">
+        </mat-form-field>
+
+        <label>Is Active</label>
+        <mat-slide-toggle [(ngModel)]="trainerProfile.active" name="active"></mat-slide-toggle>
+
+        <button mat-raised-button type="submit" >Submit</button>
+
+      </form>
+    </div>
+
+  </div>
+
+</div>

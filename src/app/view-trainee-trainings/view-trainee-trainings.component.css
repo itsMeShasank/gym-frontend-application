@@ -1,0 +1,63 @@
+.table-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.mat-h2 {
+  font-size: 44px;
+  font-family: bold;
+  margin-bottom: 20px;
+}
+
+.mat-elevation-z8 {
+  width: 100%;
+}
+
+.button-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.button-container button {
+  padding: 10px 20px; /* Adjust the button size as needed */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button-container button:hover {
+  background: #ffffff; /* Background color on hover */
+  color: #474af8; /* Text color on hover */
+}
+
+h1:hover,h2:hover,h3:hover,h4:hover,h5:hover{
+  color: #a181c3;
+}
+
+
+h1,h2,h3,h4,h5{
+  font-family: bold;
+  color: rebeccapurple;
+}
+
+h2{
+  font-size: 24px;
+}
+
+h5{
+  font-size: 18px;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 38px;
+}
+
+
+.table-header-row {
+  background-color: #e0cfef; /* Set the background color for the table header row */
+}
+
+.table-data-row{
+  background-color: #f4f0f4;
+}

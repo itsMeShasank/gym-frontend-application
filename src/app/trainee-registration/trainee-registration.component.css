@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
+}
+
+.header {
+  flex: 1;
+}
+.header h1 {
+  font-family: Montserrat;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 68px;
+  color: #171A1FFF;
+  margin-bottom: 0;
+}
+.image-registrationdetails {
+  display: flex;
+  flex-direction: row;
+}
+.image {
+  flex: 0.4;
+  align-content: flex-end;
+  background-size: cover;
+}
+.registrationdetails {
+  flex: 0.6;
+  display: flex;
+  flex-direction: column;
+}
+
+.header h4 {
+  color: grey;
+}
+
+.image img{
+  width: 400px; /* Adjust the width if needed */
+  height: 500px; /* Adjust the height if needed */
+  border-radius: 12px;
+}
+
+
+.registrationdetails button{
+  margin-top: 11%;
+}
+.registrationdetails label{
+  font-weight: bold;
+  color: dimgrey;
+}
+.registrationdetails mat-form-field{
+  width: 80%;
+}
+.registrationdetails button{
+  width:80%
+}

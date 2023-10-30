@@ -1,0 +1,45 @@
+<app-signin-nav-bar></app-signin-nav-bar>
+
+<div class="container">
+  <div class="header">
+    <h1>Registration</h1>
+    <h4>Trainer</h4>
+  </div>
+  <div class="image-registrationdetails">
+    <div class="image">
+      <img Src="assets/images/trainer-image.jpg" alt="trainer-registration-image">
+    </div>
+    <div class="registrationdetails">
+
+      <mat-form-field>
+        <mat-icon matPrefix class="my-icon">perm_identity</mat-icon>
+        <mat-label>Enter Firstname</mat-label>
+        <input matInput type="text" name="firstName" [(ngModel)]="trainer.firstName">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-icon matPrefix class="my-icon">perm_identity</mat-icon>
+        <mat-label>Enter Lastname</mat-label>
+        <input matInput type="text" name="lastName" [(ngModel)]="trainer.lastName">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-icon matPrefix class="my-icon">email</mat-icon>
+        <mat-label>Enter Email</mat-label>
+        <input matInput type="text" name="email" [(ngModel)]="trainer.mail">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-icon matPrefix class="my-icon">fitness_center</mat-icon>
+        <mat-label>please select specialization</mat-label>
+        <mat-select  [(ngModel)] = "trainer.specialization">
+          <mat-option *ngFor="let specialization of specializations" [value]="specialization.value">
+            {{specialization.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="saveTrainer()" [disabled]="!trainer.firstName || !trainer.lastName || !trainer.mail || !trainer.specialization">submit</button>
+
+    </div>
+  </div>
+</div>

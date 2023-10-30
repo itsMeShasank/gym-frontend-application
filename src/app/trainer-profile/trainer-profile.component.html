@@ -1,0 +1,65 @@
+<app-trainer-nav-bar [trainer]="trainer"></app-trainer-nav-bar>
+
+
+<div class="container">
+  <div class="my-account">
+    <h1>My Account</h1>
+  </div>
+  <div class="student-profile">
+    <div class="my-profile">
+      <h4>My Profile</h4>
+      <div class="pfp-status">
+        <div class="student-image"><img src="assets/images/male-icon.svg" alt="student-image" height="100" width="100">
+        </div>
+        <div class="student-status">
+          <h4>Status</h4>
+          <span>
+                {{ trainer.active ? 'Active' : 'InActive' }}
+          </span>
+        </div>
+      </div>
+      <div class="student-details">
+        <h3>First Name</h3>
+        <h5>{{ trainer.firstName }}</h5>
+        <h3>Last Name</h3>
+        <h5>{{ trainer.lastName }}</h5>
+        <h3>User Name</h3>
+        <h5>{{ trainer.userName }}</h5>
+        <h3>Email</h3>
+        <h5>{{ trainer.mail }}</h5>
+        <div>
+          <button mat-raised-button color="primary" (click)="navigatingToUpdatePage()" routerLinkActive="active">Edit
+            profile
+          </button>&nbsp;&nbsp;
+          <button mat-raised-button color="accent" (click)="navigatingToUpdatePassword()" routerLinkActive="active">
+            Change Password
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="my-trainers">
+      <div class="my-trainers-header">
+        <h2>My Trainees</h2>
+      </div>
+      <div class="trainers-table">
+        <mat-table [dataSource]="trainer.traineeDetailsList" class="mat-elevation-z8">
+          <!-- Position Column -->
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+            <mat-cell *matCellDef="let trainee"> {{trainee.lastName + " " + trainee.firstName}} </mat-cell>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="mail">
+            <mat-header-cell *matHeaderCellDef> Mail</mat-header-cell>
+            <mat-cell *matCellDef="let trainee"> {{trainee.mail}} </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<app-trainee-nav-bar [trainee] = 'trainee'></app-trainee-nav-bar>
+
+<div class="container">
+  <div class="header">
+    <h1>Trainee Updation</h1>
+    <h3>{{trainee.userName}}</h3>
+  </div>
+
+  <div class="body">
+    <div class="registration-form">
+      <form (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <mat-icon matPrefix class="my-icon">perm_identity</mat-icon>
+          <mat-label>Enter Firstname</mat-label>
+          <input matInput type="text" id="firstName" name="firstName" [(ngModel)]="trainee.firstName">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-icon matPrefix class="my-icon">perm_identity</mat-icon>
+          <mat-label>Enter Lastname</mat-label>
+          <input matInput type="text" id="lastName" name="lastName" [(ngModel)]="trainee.lastName">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Date of Birth (optional)</mat-label>
+          <input matInput [matDatepicker]="datePicker" id="dateOfBirth" name="dateOfBirth" [(ngModel)]= "trainee.dateOfBirth">
+          <mat-datepicker-toggle [for]="datePicker" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #datePicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-icon matPrefix class="my-icon">home</mat-icon>
+          <mat-label>Enter your full address</mat-label>
+          <textarea matInput id="address" name="address" [(ngModel)]="trainee.address"></textarea>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-icon matPrefix class="my-icon">email</mat-icon>
+          <mat-label>Enter your email</mat-label>
+          <input type="email" matInput id="email" name="email" [(ngModel)]="trainee.mail">
+        </mat-form-field>
+        <label>Is Active</label>
+        <mat-slide-toggle [(ngModel)]="trainee.active" name="active"></mat-slide-toggle>
+        <button mat-raised-button type="submit" >Submit</button>
+
+      </form>
+    </div>
+
+  </div>
+</div>
