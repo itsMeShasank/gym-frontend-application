@@ -29,4 +29,8 @@ export class TraineeNavBarComponent implements OnInit{
       data: this.trainee
     });
   }
+
+  logout() {
+    localStorage.clear();
+  }
 }

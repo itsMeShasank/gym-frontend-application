@@ -1,11 +1,11 @@
 .table-container {
   text-align: center;
   padding: 20px;
+  height: 80%;
 }
 
 .mat-h2 {
   font-size: 44px;
-  font-family: bold;
   margin-bottom: 20px;
 }
 
@@ -36,7 +36,6 @@ h1:hover,h2:hover,h3:hover,h4:hover,h5:hover{
 
 
 h1,h2,h3,h4,h5{
-  font-family: bold;
   color: rebeccapurple;
 }
 

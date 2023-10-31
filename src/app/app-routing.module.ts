@@ -19,6 +19,8 @@ import {ViewTrainerTrainingsComponent} from "./view-trainer-trainings/view-train
 import {ViewTraineeTrainingsComponent} from "./view-trainee-trainings/view-trainee-trainings.component";
 import {TraineeTrainingRequestComponent} from "./trainee-training-request/trainee-training-request.component";
 import {TrainerTrainingRequestComponent} from "./trainer-training-request/trainer-training-request.component";
+import {traineeGuard} from "./trainee.guard";
+import {trainerGuard} from "./role.guard";
 
 const routes: Routes = [
 
@@ -49,58 +51,72 @@ const routes: Routes = [
   },
   {
     path: "trainee-home",
+    canActivate: [traineeGuard],
     component: TraineeNavBarComponent
   },
   {
     path: "trainer-home",
+    canActivate: [trainerGuard],
     component: TrainerNavBarComponent
   },
   {
     path: "trainee-profile",
+    canActivate: [traineeGuard],
     component: TraineeProfileComponent
   },
   {
     path: "trainer-profile",
+    canActivate: [trainerGuard],
     component: TrainerProfileComponent
   },
   {
     path: "update-trainee-profile",
+    canActivate: [traineeGuard],
     component: UpdateTraineeComponentComponent
   },
   {
     path: "update-trainer-profile",
+    canActivate: [trainerGuard],
     component: UpdateTrainerComponentComponent
   },
   {
     path: "update-trainer-password",
+    canActivate: [trainerGuard],
     component: UpdateTrainerPasswordComponent
   },
   {
     path: "update-trainee-password",
+    canActivate: [traineeGuard],
     component: UpdateTraineePasswordComponent
   },
   {
     path: "update-trainee-trainers",
+    canActivate: [traineeGuard],
     component: UpdateTraineeTrainersComponent
   },
   {
     path: "training-registration",
+    canActivate: [trainerGuard],
     component: TrainingRegistrationComponent
   },
   {
     path: "trainer-trainings",
+    canActivate: [trainerGuard],
     component: ViewTrainerTrainingsComponent
   },
   {
     path: "trainee-trainings",
+    canActivate: [traineeGuard],
     component: ViewTraineeTrainingsComponent
   },
   {
     path: "trainee-trainings-request",
+    canActivate: [traineeGuard],
     component: TraineeTrainingRequestComponent
   },
   {
     path: "trainer-trainings-request",
+    canActivate: [trainerGuard],
     component: TrainerTrainingRequestComponent
   }
 ];

@@ -33,7 +33,7 @@ export class TrainerRegistrationComponent {
       next: (userCredential: any) => {
         this.snackBar.openSnackBar("Successfully Account Created.", 1000);
         this.dialog.open(DialogBoxComponent, {
-          data: {username: userCredential.username, password: userCredential.password}
+          data: {username: userCredential.userName, password: userCredential.password}
         });
       },
       error: () => {

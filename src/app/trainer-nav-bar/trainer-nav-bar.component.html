@@ -8,7 +8,7 @@
         <p (click)="sendToMyProfile()">GYM</p>
       </div>
       <div class="nav-info">
-        <button mat-raised-button routerLink="/login" routerLinkActive="active">Log out</button>
+        <button mat-raised-button (click)="logout()">Log out</button>
 <!--        <button mat-raised-button >My Profile</button>-->
         <button mat-raised-button (click)="redirectToMyTrainings()" >View Trainings</button>
         <button mat-raised-button (click)="sendButtonEventToParent()">Add Trainings</button>

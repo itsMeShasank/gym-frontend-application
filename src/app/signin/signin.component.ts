@@ -6,6 +6,7 @@ import {TrainerService} from "../service/trainer.service";
 import {TraineeService} from "../service/trainee.service";
 import {Trainer} from "../model/Trainer";
 import {UserCredentials} from "../model/UserCredentials";
+import {GuardService} from "../service/guardService";
 
 
 @Component({
@@ -20,7 +21,9 @@ export class SigninComponent {
   trainee: any;
   trainer: Trainer = new Trainer();
 
-  constructor(private accountService: AccountService, private traineeService: TraineeService, private trainerService: TrainerService, private router: Router, private snackBar: SnackbarService) {}
+  constructor(private guardService: GuardService,private accountService: AccountService, private traineeService: TraineeService, private trainerService: TrainerService, private router: Router, private snackBar: SnackbarService) {
+    localStorage.clear();
+  }
 
 
   verifyLoginDetails() {
@@ -30,6 +33,7 @@ export class SigninComponent {
         if (this.userType === "Trainee") {
           this.traineeService.getTraineeDetails(this.userCredential.userName).subscribe({
             next: (trainee: any) => {
+              this.guardService.setUserRole(2);
               this.trainee = trainee;
               this.router.navigate(['/trainee-profile'], {state: {trainee: this.trainee}});
             },
@@ -40,6 +44,7 @@ export class SigninComponent {
         } else {
           this.trainerService.getTrainerDetails(this.userCredential.userName).subscribe({
             next: (trainer: any) => {
+              this.guardService.setUserRole(1);
               this.trainer = trainer;
               this.router.navigate(['/trainer-profile'], {state: {trainer: this.trainer}});
             },

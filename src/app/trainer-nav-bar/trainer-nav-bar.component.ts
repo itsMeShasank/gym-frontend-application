@@ -31,4 +31,8 @@ export class TrainerNavBarComponent implements OnInit{
       data: this.trainer
     });
   }
+
+  logout() {
+    localStorage.clear();
+  }
 }
