@@ -7,21 +7,24 @@ import {Router} from "@angular/router";
   templateUrl: './trainee-profile.component.html',
   styleUrls: ['./trainee-profile.component.css']
 })
-export class TraineeProfileComponent implements OnInit{
+export class TraineeProfileComponent implements OnInit {
 
-  userName:string = "";
+  userName: string = "";
   trainee: Trainee = {
-    userName:"",
-    firstName:"",
-    lastName:"",
-    mail:"",
-    dateOfBirth:"",
+    userName: "",
+    firstName: "",
+    lastName: "",
+    mail: "",
+    dateOfBirth: "",
     address: "",
     active: false,
     trainersList: []
   }
   displayedColumns: string[] = ['name', 'specialization'];
-  constructor(private router:Router) {}
+
+  constructor(private router: Router) {
+  }
+
   ngOnInit(): void {
     const state = window.history.state;
     this.trainee = state.trainee;

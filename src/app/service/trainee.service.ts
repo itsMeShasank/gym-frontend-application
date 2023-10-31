@@ -12,7 +12,7 @@ import {TraineeTrainings} from "../model/traineeTrainings";
 })
 export class TraineeService {
   constructor(private httpClient: HttpClient) { }
-  fetchTrainee:string = "http://localhost:8000/gym-service"
+  fetchTrainee:string = "gym-service/gym"
   getTraineeDetails(username:string):Observable<Trainee>{
     return this.httpClient.get<Trainee>(`${this.fetchTrainee}/trainee/fetch-details/${username}`);
   }
@@ -30,6 +30,7 @@ export class TraineeService {
   }
 
   getTrainings(traineeTrainings: TraineeTrainings):Observable<any> {
+
     return this.httpClient.post(`${this.fetchTrainee}/trainee-trainings-list`,traineeTrainings);
 
   }

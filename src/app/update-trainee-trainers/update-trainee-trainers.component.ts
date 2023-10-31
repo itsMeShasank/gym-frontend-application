@@ -13,20 +13,20 @@ import {TraineeTrainersList} from "../model/TraineeTrainersList";
   templateUrl: './update-trainee-trainers.component.html',
   styleUrls: ['./update-trainee-trainers.component.css']
 })
-export class UpdateTraineeTrainersComponent implements OnInit{
+export class UpdateTraineeTrainersComponent implements OnInit {
 
   displayedColumns: string[] = ['select', 'username', 'firstName', 'specialization'];
 
 
   trainee: Trainee = {
-    userName:"",
-    mail:"",
+    userName: "",
+    mail: "",
     dateOfBirth: "",
-    active:true,
-    trainersList:[],
-    firstName:"",
-    address:"",
-    lastName:""
+    active: true,
+    trainersList: [],
+    firstName: "",
+    address: "",
+    lastName: ""
   }
   existingTrainerProfiles: Trainer[] = [];
 
@@ -37,8 +37,9 @@ export class UpdateTraineeTrainersComponent implements OnInit{
   loading = true;
   traineeFirstName: any;
 
-  constructor(private router: Router, private traineeService:TraineeService, private _snackBar: MatSnackBar) {
+  constructor(private router: Router, private traineeService: TraineeService, private _snackBar: MatSnackBar) {
   }
+
   ngOnInit(): void {
 
     const state = history.state;
@@ -62,9 +63,8 @@ export class UpdateTraineeTrainersComponent implements OnInit{
 
   }
 
-  fetchFreeTrainers(username: string){
+  fetchFreeTrainers(username: string) {
     this.traineeService.getFreeTrainers(username).subscribe(value => {
-      console.log(value+" vachae")
       for (const trainer of this.existingTrainerProfiles) {
         this.dataSource.data.push(trainer);
         this.selection.select(trainer);
@@ -126,6 +126,7 @@ export class UpdateTraineeTrainersComponent implements OnInit{
       console.log("Please select at least one element");
     }
   }
+
   openSnackBar() {
     this._snackBar.open("Successfully Updated Trainers, Please Login Again", "OK");
   }

@@ -19,11 +19,13 @@ export class TrainerProfileComponent implements OnInit {
     this.trainer = state.trainer;
   }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   navigatingToUpdatePage() {
     this.router.navigate(['/update-trainer-profile'], {state: {trainer: this.trainer}});
   }
+
   navigatingToUpdatePassword() {
     this.router.navigate(['/update-trainer-password'], {state: {trainer: this.trainer}});
   }

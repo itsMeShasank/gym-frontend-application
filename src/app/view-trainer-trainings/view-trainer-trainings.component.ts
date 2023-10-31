@@ -8,21 +8,22 @@ import {Router} from "@angular/router";
   templateUrl: './view-trainer-trainings.component.html',
   styleUrls: ['./view-trainer-trainings.component.css']
 })
-export class ViewTrainerTrainingsComponent implements OnInit{
+export class ViewTrainerTrainingsComponent implements OnInit {
 
   trainingData: TrainingDetails[] = [];
   displayedColumns: string[] = ['name', 'date', 'duration', 'trainerName', 'traineeName']
   trainer: Trainer = new Trainer();
 
-  constructor(private router:Router) {
+  constructor(private router: Router) {
   }
+
   ngOnInit(): void {
     const state = window.history.state;
     this.trainer = state.trainer;
     this.trainingData = state.trainings;
   }
+
   goBack() {
-    console.log(this.trainer);
-    this.router.navigate(['/trainer-profile'],{state : {trainer : this.trainer}});
+    this.router.navigate(['/trainer-profile'], {state: {trainer: this.trainer}});
   }
 }

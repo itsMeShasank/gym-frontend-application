@@ -1,4 +1,4 @@
-export interface UserCredentials {
+export interface UserCredentialsUpdate {
   userName:string;
   oldPassword:string;
   newPassword:string;

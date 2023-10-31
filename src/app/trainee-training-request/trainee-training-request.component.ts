@@ -16,17 +16,17 @@ import {TrainingDetails} from "../model/TrainingDetails";
   templateUrl: './trainee-training-request.component.html',
   styleUrls: ['./trainee-training-request.component.css']
 })
-export class TraineeTrainingRequestComponent implements OnInit{
+export class TraineeTrainingRequestComponent implements OnInit {
   trainingForm: any;
   trainingList: string[] = [];
-  trainersList: TrainerSignup[]=[];
+  trainersList: TrainerSignup[] = [];
 
-  trainee:Trainee = {
-    userName:"",
-    firstName:"",
-    lastName:"",
-    mail:"",
-    dateOfBirth:"",
+  trainee: Trainee = {
+    userName: "",
+    firstName: "",
+    lastName: "",
+    mail: "",
+    dateOfBirth: "",
     address: "",
     active: false,
     trainersList: []
@@ -55,15 +55,15 @@ export class TraineeTrainingRequestComponent implements OnInit{
     }
 
     this.trainingForm = this.fb.group({
-      traineeName: [{ value: '', disabled: true }, Validators.required],
+      traineeName: [{value: '', disabled: true}, Validators.required],
       trainerToggle: [false],
-      trainerName: [{ value: '', disabled: true }, Validators.required],
+      trainerName: [{value: '', disabled: true}, Validators.required],
       range: new FormGroup({
-        start: new FormControl<Date | null>({ value: null, disabled: true }),
-        end: new FormControl<Date | null>({ value: null, disabled: true }),
+        start: new FormControl<Date | null>({value: null, disabled: true}),
+        end: new FormControl<Date | null>({value: null, disabled: true}),
       }), // Set the initial disabled state
       dateToggle: [false],
-      trainingType: [{ value: null, disabled: true }, Validators.required],
+      trainingType: [{value: null, disabled: true}, Validators.required],
       trainingToggle: [false],
     });
 
@@ -101,7 +101,6 @@ export class TraineeTrainingRequestComponent implements OnInit{
 
   onSubmit() {
     const formValues = this.trainingForm.value;
-    console.log(formValues);
 
     let traineeTrainings: TraineeTrainings = new TraineeTrainings();
     traineeTrainings.traineeUserName = this.trainee.userName;
@@ -136,7 +135,7 @@ export class TraineeTrainingRequestComponent implements OnInit{
       } else {
         let trainingsDetails: TrainingDetails[] = value;
         if (trainingsDetails.length > 0)
-          this.router.navigate(['/trainee-trainings'], { state: { trainings: trainingsDetails, trainee: this.trainee } });
+          this.router.navigate(['/trainee-trainings'], {state: {trainings: trainingsDetails, trainee: this.trainee}});
         else
           this.snackBar.open("No Training Records found", "Ok");
       }
@@ -146,6 +145,5 @@ export class TraineeTrainingRequestComponent implements OnInit{
   ngOnInit(): void {
     const state = window.history.state;
     this.trainee = state.trainee;
-    console.log(this.trainee.userName+" vachindhii");
   }
 }

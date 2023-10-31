@@ -3,11 +3,14 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/com
 import {Observable} from 'rxjs';
 
 @Injectable()
-export class CustomInterceptorInterceptor implements HttpInterceptor {
+export class CustomInterceptor implements HttpInterceptor {
 
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    console.log(localStorage.getItem('token')," token came at interceptor");
+    const token = localStorage.getItem('token');
+    request = request.clone({headers: request.headers.set('Authorization','' + token)});
     return next.handle(request);
   }
 }

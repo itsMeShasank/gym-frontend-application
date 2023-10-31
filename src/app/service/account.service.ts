@@ -1,31 +1,30 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {UserCredentails} from "../model/UserCredentails";
 import {TrainerSignup} from "../model/TrainerSignup";
 import {TraineeSignup} from "../model/TraineeSignup";
-import {UserCredentials} from "./UserCredentials";
+import {UserCredentialsUpdate} from "../model/UserCredentialsUpdate";
+import {UserCredentials} from "../model/UserCredentials";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
-  private baseUrl="http://localhost:8000/gym-service"
-  private loginUrl = "http://localhost:8099/gym-service/authenticate"
+  private baseUrl="/gym-service/gym"
   constructor(private httpClient: HttpClient) { }
 
-  sendTraineeDetails(trainee:TraineeSignup): Observable<UserCredentails> {
-    return this.httpClient.post<UserCredentails>(`${this.baseUrl}/trainee/trainee-signup`,trainee);
+  sendTraineeDetails(trainee:TraineeSignup): Observable<UserCredentialsUpdate> {
+    return this.httpClient.post<UserCredentialsUpdate>(`${this.baseUrl}/trainee/trainee-signup`,trainee);
   }
-  sendTrainerDetails(trainer:TrainerSignup): Observable<UserCredentails> {
-    return this.httpClient.post<UserCredentails>(`${this.baseUrl}/trainer/trainer-signup`,trainer);
+  sendTrainerDetails(trainer:TrainerSignup): Observable<UserCredentialsUpdate> {
+    return this.httpClient.post<UserCredentialsUpdate>(`${this.baseUrl}/trainer/trainer-signup`,trainer);
   }
-  verifyLoginCredential(userCredential: UserCredentails):Observable<any> {
-    return this.httpClient.post(`${this.loginUrl}/login`,userCredential,{responseType: 'text'});
+  verifyLoginCredential(userCredential: UserCredentials):Observable<any> {
+    return this.httpClient.post(`/gym-service/authenticate/login`,userCredential,{responseType: 'text'});
   }
 
-  updatePassword(userData: UserCredentials):Observable<any> {
+  updatePassword(userData: UserCredentialsUpdate):Observable<any> {
     return this.httpClient.put(`${this.baseUrl}/update-password`,userData);
   }
 

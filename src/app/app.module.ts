@@ -26,7 +26,6 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {TraineeNavBarComponent} from './trainee-nav-bar/trainee-nav-bar.component';
 import {TrainerNavBarComponent} from './trainer-nav-bar/trainer-nav-bar.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {CustomInterceptorInterceptor} from "./service/custom-interceptor.interceptor";
 import {MatRadioModule} from "@angular/material/radio";
 import {TrainerProfileComponent} from './trainer-profile/trainer-profile.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
@@ -45,6 +44,8 @@ import {TraineeTrainingRequestComponent} from './trainee-training-request/traine
 import {MatDialogModule} from "@angular/material/dialog";
 import {TrainerTrainingRequestComponent} from './trainer-training-request/trainer-training-request.component';
 import {NgOptimizedImage} from "@angular/common";
+import {CustomInterceptor} from "./custom.interceptor";
+import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import {NgOptimizedImage} from "@angular/common";
     ViewTraineeTrainingsComponent,
     TraineeTrainingRequestComponent,
     TrainerTrainingRequestComponent,
+    DialogBoxComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,7 +100,7 @@ import {NgOptimizedImage} from "@angular/common";
 
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: CustomInterceptorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

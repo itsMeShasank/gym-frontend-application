@@ -17,27 +17,28 @@ import {TrainingDetails} from "../model/TrainingDetails";
 })
 export class TrainerTrainingRequestComponent {
   trainingForm: any;
-  traineesList: Trainee[] =[];
+  traineesList: Trainee[] = [];
   trainer: Trainer = new Trainer();
-  constructor(private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any, private trainerService: TrainerService, private snackBar:MatSnackBar,
-              private router:Router) {
+
+  constructor(private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any, private trainerService: TrainerService, private snackBar: MatSnackBar,
+              private router: Router) {
 
     if (data) {
       this.trainer = data;
     }
 
-    if(this.trainer.traineeDetailsList){
+    if (this.trainer.traineeDetailsList) {
       this.traineesList = this.trainer.traineeDetailsList;
     }
 
 
     this.trainingForm = this.fb.group({
-      trainerName: [{ value: '', disabled: true }, Validators.required],
-      traineeName: [{ value: '', disabled: true }, Validators.required],
+      trainerName: [{value: '', disabled: true}, Validators.required],
+      traineeName: [{value: '', disabled: true}, Validators.required],
       traineeToggle: [false],
       range: new FormGroup({
-        start: new FormControl<Date | null>({ value: null, disabled: true }),
-        end: new FormControl<Date | null>({ value: null, disabled: true }),
+        start: new FormControl<Date | null>({value: null, disabled: true}),
+        end: new FormControl<Date | null>({value: null, disabled: true}),
       }),
       dateToggle: [false]
     });
@@ -60,22 +61,22 @@ export class TrainerTrainingRequestComponent {
 
     this.trainingForm.get('trainerName')?.setValue(this.trainer.userName);
   }
+
   onSubmit() {
 
     const formValues = this.trainingForm.value;
-    console.log(formValues);
 
-    let trainerTrainings : TrainerTrainings = new TrainerTrainings();
+    let trainerTrainings: TrainerTrainings = new TrainerTrainings();
     trainerTrainings.trainerUserName = this.trainer.userName;
 
-    if(this.trainingForm.value.traineeToggle){
-      trainerTrainings.traineeUserName=this.trainingForm.value.traineeName;
-      console.log("Trainer Chosen "+trainerTrainings.traineeUserName);
+    if (this.trainingForm.value.traineeToggle) {
+      trainerTrainings.traineeUserName = this.trainingForm.value.traineeName;
+      console.log("Trainer Chosen " + trainerTrainings.traineeUserName);
     }
 
-    console.log(JSON.stringify(this.trainer)+"from reqeust box trainer")
+    console.log(JSON.stringify(this.trainer) + "from reqeust box trainer")
 
-    if(this.trainingForm.value.dateToggle){
+    if (this.trainingForm.value.dateToggle) {
       const startDate = this.trainingForm.get('range.start')?.value;
       const endDate = this.trainingForm.get('range.end')?.value;
       if (startDate && endDate) {
@@ -84,24 +85,22 @@ export class TrainerTrainingRequestComponent {
         trainerTrainings.startDate = formattedStartDate;
         trainerTrainings.endDate = formattedEndDate;
       }
-      console.log("Dates Chosen "+trainerTrainings.startDate+ "  "+trainerTrainings.endDate);
+      console.log("Dates Chosen " + trainerTrainings.startDate + "  " + trainerTrainings.endDate);
     }
 
 
-
-
-    this.trainerService.getTrainings(trainerTrainings).subscribe(value => {
-      console.log(value);
-      if(value.errorMessage){
-        this.snackBar.open("Please Check Inputs and try Again!", "Ok");
-      }else{
+    this.trainerService.getTrainings(trainerTrainings).subscribe({
+      next: (value:any) => {
         let trainingsDetails: TrainingDetails[] = value;
-        if(trainingsDetails.length>0)
-          this.router.navigate(['/trainer-trainings'], {state:{trainings: trainingsDetails, trainer : this.trainer}});
+        if (trainingsDetails.length > 0)
+          this.router.navigate(['/trainer-trainings'], {state: {trainings: trainingsDetails, trainer: this.trainer}});
         else
           this.snackBar.open("No Training Records found", "Ok");
+      },
+      error: () => {
+        this.snackBar.open("Please Check Inputs and try Again!", "Ok");
       }
-    })
+    });
 
   }
 }

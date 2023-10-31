@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
 import {TrainerSignup} from "../model/TrainerSignup";
 import {AccountService} from "../service/account.service";
+import {SnackbarService} from "../service/snackbar.service";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogBoxComponent} from "../dialog-box/dialog-box.component";
 
 interface Specialization {
   value: string;
@@ -22,12 +25,20 @@ export class TrainerRegistrationComponent {
   ];
   trainer: TrainerSignup = new TrainerSignup();
 
-  constructor(private accountService: AccountService) {
+  constructor(private accountService: AccountService, private snackBar: SnackbarService, public dialog: MatDialog) {
   }
   saveTrainer() {
     console.log(this.trainer);
-    this.accountService.sendTrainerDetails(this.trainer).subscribe(data => {
-      console.log(data);
-    },error => console.log(error));
+    this.accountService.sendTrainerDetails(this.trainer).subscribe({
+      next: (userCredential: any) => {
+        this.snackBar.openSnackBar("Successfully Account Created.", 1000);
+        this.dialog.open(DialogBoxComponent, {
+          data: {username: userCredential.username, password: userCredential.password}
+        });
+      },
+      error: () => {
+        this.snackBar.openSnackBar("Account Not yet Created.", 1000);
+      }
+    });
   }
 }

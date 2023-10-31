@@ -13,7 +13,7 @@ export class TrainerService {
 
   constructor(private httpClient: HttpClient) { }
 
-  fetchTrainer:string = "http://localhost:8000/gym-service"
+  fetchTrainer:string = "/gym-service/gym"
   getTrainerDetails(username:string):Observable<Trainer>{
     return this.httpClient.get<Trainer>(`${this.fetchTrainer}/trainer/fetch-details/${username}`);
   }
