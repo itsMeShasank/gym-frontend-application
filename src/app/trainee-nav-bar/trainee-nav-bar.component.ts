@@ -32,5 +32,7 @@ export class TraineeNavBarComponent implements OnInit{
 
   logout() {
     localStorage.clear();
+    window.history.state.clear;
+    this.router.navigate([""]);
   }
 }

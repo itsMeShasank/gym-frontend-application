@@ -97,7 +97,7 @@ import { DialogBoxComponent } from './dialog-box/dialog-box.component';
     MatCheckboxModule,
     MatDialogModule,
     NgOptimizedImage,
-
+    MatInputModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },

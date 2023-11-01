@@ -20,6 +20,8 @@ export class TrainerNavBarComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    const state = window.history.state;
+    this.trainer = state.trainer;
   }
 
   sendToMyProfile() {
@@ -34,5 +36,7 @@ export class TrainerNavBarComponent implements OnInit{
 
   logout() {
     localStorage.clear();
+    window.history.state.clear;
+    this.router.navigate([""]);
   }
 }

@@ -6,6 +6,5 @@ import {Component} from '@angular/core';
   styleUrls: ['./joinus-component.component.css']
 })
 export class JoinusComponentComponent {
-  longText: string = "hello";
 
 }

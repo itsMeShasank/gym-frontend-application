@@ -21,16 +21,15 @@ export class UpdateTrainerPasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const state = history.state;
-    if (state && state.trainer) {
+    const state = window.history.state;
       this.userData.userName = state.trainer.userName;
-    }
   }
 
   onSubmit() {
     this.accountService.updatePassword(this.userData).subscribe({
       next: () => {
         this.router.navigate(['/login']);
+        this.snackBar.openSnackBar("Successfully Password updated.", 1000);
       },
       error: (error:any) => {
         if(error.status === 400 )

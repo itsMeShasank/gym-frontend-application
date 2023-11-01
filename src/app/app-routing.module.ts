@@ -20,7 +20,7 @@ import {ViewTraineeTrainingsComponent} from "./view-trainee-trainings/view-train
 import {TraineeTrainingRequestComponent} from "./trainee-training-request/trainee-training-request.component";
 import {TrainerTrainingRequestComponent} from "./trainer-training-request/trainer-training-request.component";
 import {traineeGuard} from "./trainee.guard";
-import {trainerGuard} from "./role.guard";
+import {trainerGuard} from "./trainer.guard";
 
 const routes: Routes = [
 

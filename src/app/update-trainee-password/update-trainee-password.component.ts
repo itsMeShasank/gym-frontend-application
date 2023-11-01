@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserCredentialsUpdate} from "../model/UserCredentialsUpdate";
 import {AccountService} from "../service/account.service";
 import {SnackbarService} from "../service/snackbar.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -18,7 +19,7 @@ export class UpdateTraineePasswordComponent implements OnInit {
     oldPassword: "",
   };
 
-  constructor(private accountService: AccountService, private snackBar: SnackbarService) {
+  constructor(private router: Router,private accountService: AccountService, private snackBar: SnackbarService) {
   }
 
   ngOnInit(): void {
@@ -30,6 +31,7 @@ export class UpdateTraineePasswordComponent implements OnInit {
     console.log(this.userData);
     this.accountService.updatePassword(this.userData).subscribe({
       next: () => {
+        this.router.navigate(['/login']);
         this.snackBar.openSnackBar("Successfully Password updated.", 1000);
       },
       error: (error:any) => {

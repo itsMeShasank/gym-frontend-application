@@ -1,6 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {AboutusComponentComponent} from './aboutus-component.component';
+import {SigninNavBarComponent} from "../signin-nav-bar/signin-nav-bar.component";
 
 describe('AboutusComponentComponent', () => {
   let component: AboutusComponentComponent;
@@ -8,7 +9,7 @@ describe('AboutusComponentComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AboutusComponentComponent]
+      declarations: [AboutusComponentComponent,SigninNavBarComponent]
     });
     fixture = TestBed.createComponent(AboutusComponentComponent);
     component = fixture.componentInstance;

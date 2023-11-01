@@ -21,10 +21,14 @@ export class TrainingRegistrationComponent implements OnInit{
     this.trainingDetails.trainingType = this.trainer.specialization;
     this.trainingDetails.traineeUserName = this.traineeUserName;
     console.log(this.trainingDetails);
-    this.trainerService.registerTrainingDetails(this.trainingDetails).subscribe(data => {
-      this.router.navigate(['/trainer-profile'],{state:{trainer:this.trainer}});
-    },() => {
-      console.log("please provide proper information")});
+    this.trainerService.registerTrainingDetails(this.trainingDetails).subscribe({
+      next:() =>{
+        this.router.navigate(['/trainer-profile'],{state:{trainer:this.trainer}});
+      },
+      error: ()=> {
+      console.log("please provide proper information");
+    }
+    });
   }
 
   ngOnInit(): void {
