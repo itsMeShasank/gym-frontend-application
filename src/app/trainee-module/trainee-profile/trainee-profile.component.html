@@ -1,0 +1,71 @@
+<app-trainee-nav-bar [trainee]='trainee'></app-trainee-nav-bar>
+
+<div class="container">
+  <div class="my-account">
+    <h1>My Account</h1>
+  </div>
+  <div class="student-profile">
+    <div class="my-profile">
+      <h4>My Profile</h4>
+      <div class="pfp-status">
+        <div class="trainee-image"><img src="../../../assets/images/male-icon.svg" alt="student-image" height="100" width="100" >
+        </div>
+        <div class="student-status">
+          <h4>Status</h4>
+          <span>
+                {{ trainee.active ? 'Active' : 'InActive' }}
+          </span>
+        </div>
+      </div>
+      <div class="student-details">
+        <h3>First Name</h3>
+        <h5>{{ trainee.firstName }}</h5>
+        <h3>Last Name</h3>
+        <h5>{{ trainee.lastName }}</h5>
+        <h3>User Name</h3>
+        <h5>{{ trainee.userName }}</h5>
+        <h3>Date of Birth</h3>
+        <h5>{{ trainee.dateOfBirth }}</h5>
+        <h3>Address</h3>
+        <h5>{{ trainee.address }}</h5>
+        <h3>Email</h3>
+        <h5>{{ trainee.mail }}</h5>
+        <div>
+          <button mat-raised-button color="primary" (click)="navigatingToUpdatePage()">Edit profile</button>&nbsp;&nbsp;
+          <button mat-raised-button color="accent" (click)="navigatingToUpdatePassword()" routerLinkActive="active">Change Password</button>
+        </div>
+      </div>
+    </div>
+    <div class="my-trainers">
+      <div class="my-trainers-header">
+        <h2>My Trainers</h2>
+        <button mat-raised-button color="primary" (click) = "addTrainersToTrainee()">Add trainer</button>
+      </div>
+      <div class="trainers-table">
+        <table class="mat-elevation-z8 custom-table">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Specialization</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let trainer of trainee.trainersList">
+            <td>{{ trainer.lastName + ' ' + trainer.firstName }}</td>
+            <td>{{ trainer.specialization }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+<!--  <div class="my-trainings">-->
+<!--    <h1>My Trainings</h1>-->
+<!--    <p>-->
+<!--      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.-->
+<!--    </p>-->
+<!--    <button mat-raised-button color="accent">view trainings</button>-->
+<!--  </div>-->
+</div>

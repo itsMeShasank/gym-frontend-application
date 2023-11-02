@@ -13,6 +13,7 @@ export const traineeGuard: CanActivateFn = (route, state) => {
       return false;
     } else {
       alert("Access Denied");
+      roleGuardService.redirectToHome();
       return false;
     }
   }

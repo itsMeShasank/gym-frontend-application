@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
-import {FooterComponentComponent} from "./footer-component/footer-component.component";
+import {FooterComponentComponent} from "./shared-module/footer-component/footer-component.component";
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({

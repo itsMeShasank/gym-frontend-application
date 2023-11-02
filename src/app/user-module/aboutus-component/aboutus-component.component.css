@@ -1,0 +1,35 @@
+.main-container {
+  height: 95%;
+  background-image: url("../../../assets/images/minions_background.jpg");
+  background-size: cover;
+  animation: slide-up 2s ease-out forwards;
+}
+
+.animated-text {
+  font-size: 80px;
+  animation: slide-up 2s ease-out forwards;
+}
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: "Helvetica Neue", sans-serif;
+}
+p {
+  font-family: "Helvetica Neue", sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 5%;
+  animation: slide-up 2s ease-out forwards;
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

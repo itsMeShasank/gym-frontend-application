@@ -1,0 +1,47 @@
+<app-signin-nav-bar></app-signin-nav-bar>
+<div class="container">
+  <div class="header">
+    <h1>Registration</h1>
+    <h4>Trainee</h4>
+  </div>
+  <div class="image-registrationdetails">
+    <div class="image">
+      <img src="../../../assets/images/trainee-register.png" alt="trainer-registration-image">
+    </div>
+    <div class="registrationdetails">
+
+      <mat-form-field >
+        <mat-icon matPrefix class="my-icon">perm_identity</mat-icon>
+        <mat-label>Enter Firstname</mat-label>
+        <input matInput type="text" name="firstName" [(ngModel)]="trainee.firstName" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-icon matPrefix class="my-icon">perm_identity</mat-icon>
+        <mat-label>Enter Lastname</mat-label>
+        <input matInput type="text" name="lastName" [(ngModel)]="trainee.lastName" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-icon matPrefix class="my-icon">email</mat-icon>
+        <mat-label>Enter Email</mat-label>
+        <input matInput type="email" name="mail" [(ngModel)]="trainee.mail" required>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-icon matPrefix class="my-icon">home</mat-icon>
+        <mat-label>Enter your full address </mat-label>
+        <textarea matInput name="address" [(ngModel)]="trainee.address" required></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Date of Birth (optional)</mat-label>
+        <input matInput [matDatepicker]="datePicker" name="dateOfBirth" [(ngModel)] = "trainee.dateOfBirth">
+        <mat-datepicker-toggle [for]="datePicker" matSuffix ></mat-datepicker-toggle>
+        <mat-datepicker #datePicker></mat-datepicker>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="saveTraineeDetails()" [disabled]="!trainee.firstName || !trainee.lastName || !trainee.mail || !trainee.address">submit</button>
+    </div>
+  </div>
+</div>

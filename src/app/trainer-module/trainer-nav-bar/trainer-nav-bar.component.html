@@ -1,0 +1,21 @@
+<header>
+  <div class="navBar">
+    <div class="nav-logo">
+      <div class="logo">
+        <img src='../../../assets/images/icon.svg' alt="logo" (click)="sendToMyProfile()"/>
+      </div>
+      <div class="logo-spacer">
+        <p (click)="sendToMyProfile()">GYM</p>
+      </div>
+      <div class="nav-info">
+        <button mat-raised-button (click)="logout()">Log out</button>
+        <button mat-raised-button (click)="redirectToMyTrainings()" >View Trainings</button>
+        <button mat-raised-button (click)="sendButtonEventToParent()">Add Trainings</button>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+
+<router-outlet></router-outlet>

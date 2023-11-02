@@ -1,0 +1,27 @@
+<app-trainer-nav-bar [trainer] = 'trainer'></app-trainer-nav-bar>
+
+<div class="table-container">
+  <h2 class="mat-h2">Training Data of Trainee</h2>
+  <table class="mat-elevation-z8">
+    <tr>
+      <th><h2>Trainer Name</h2></th>
+      <th><h2>Trainee Name</h2></th>
+      <th><h2>Training Name</h2></th>
+      <th><h2>Training Date</h2></th>
+      <th><h2>Duration (Mins)</h2></th>
+    </tr>
+    <tr *ngFor="let element of trainingData">
+      <td><h5>{{ element.trainerUserName }}</h5></td>
+      <td><h5>{{ element.traineeUserName }}</h5></td>
+      <td><h5>{{ element.trainingName }}</h5></td>
+      <td><h5>{{ element.trainingDate | date }}</h5></td>
+      <td><h5>{{ element.trainingDuration }}</h5></td>
+    </tr>
+  </table>
+
+
+
+  <div class="button-container">
+    <button mat-raised-button color="primary" (click)="goBack()">Done</button>
+  </div>
+</div>
